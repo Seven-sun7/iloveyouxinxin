@@ -4,14 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>520给鑫鑫姐姐的惊喜</title>
+    <title>website</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <audio autoplay loop>
+    <audio autoplay loop muted id="bgm">
         <source src="music.mp3" type="audio/mpeg">
-        你的浏览器不支持 audio 标签。
-    </audio>
+      </audio>
+      <script>
+        document.addEventListener("click", () => {
+          const audio = document.getElementById("bgm");
+          audio.muted = false;
+          audio.play();
+        });
+      </script>      
     <div class="container">
         <h1>520快乐，我的鑫鑫姐姐 💖</h1>
         <p class="message">
