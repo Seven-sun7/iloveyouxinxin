@@ -1,4 +1,4 @@
-// --- ✅ script.js 完整版本 ---
+// --- ✅ script.js 完整版本（已取消打字机动画） ---
 
 // Canvas 动画背景（爱心粒子）
 const canvas = document.getElementById('canvas');
@@ -68,7 +68,7 @@ nextButtons.forEach(btn => {
   btn.addEventListener('click', () => {
     currentPage++;
     showPage(currentPage);
-    if (currentPage === 1) startTyping();
+    if (currentPage === 1) showLetter();
   });
 });
 
@@ -78,7 +78,7 @@ choices.forEach(btn => {
   btn.addEventListener('click', () => showPage(3));
 });
 
-// 打字机效果
+// 直接显示情书内容
 const letterText = `其实我也不知道该怎么开口才好。
 这大概算不上是一封正式的告白信，更像是一些藏在我心里的真实想法。
 
@@ -95,15 +95,9 @@ const letterText = `其实我也不知道该怎么开口才好。
 
 未来总是充满未知，但我知道我最想做的事情，就是好好珍惜现在、珍惜和你在一起的每一个瞬间。`;
 
-function startTyping() {
+function showLetter() {
   const element = document.getElementById('letter');
-  element.textContent = '';
-  let i = 0;
-  const interval = setInterval(() => {
-    element.textContent += letterText[i];
-    i++;
-    if (i >= letterText.length) clearInterval(interval);
-  }, 40);
+  element.textContent = letterText;
 }
 
 // 初始显示第一页
