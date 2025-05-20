@@ -14,11 +14,17 @@
   }</style>
 </head>
 <body>
-  <audio id="bgm" autoplay loop>
-    <source src="music.mp3" type="audio/mpeg" />
-  </audio>
-  <button id="muteToggle">🔊</button>
-
+    <audio autoplay loop muted id="bgm">
+        <source src="music.mp3" type="audio/mpeg">
+      </audio>
+      <script>
+        document.addEventListener("click", () => {
+          const audio = document.getElementById("bgm");
+          audio.muted = false;
+          audio.play();
+        });
+      </script>
+      
   <div class="page" id="page1">
     <h1 class="fade-in">嘿，尹鑫姐姐👋<br>520快乐呀💖</h1>
     <button class="next">进入下一页</button>
@@ -30,14 +36,14 @@
   </div>
 
   <div class="page hidden" id="page3">
-    <h2>亲爱的尹鑫姐姐，<br>你愿意和我一起珍惜当下的互相陪伴吗？</h2>
-    <button class="choice" data-next="page4">❤️ 我愿意！</button>
-    <button class="choice" data-next="page4">😊 我再想想~</button>
+    <h2>你觉得我写的好不好</h2>
+    <button class="choice" data-next="page4">❤️ 好！</button>
+    <button class="choice" data-next="page4">😊 还差点意思~</button>
   </div>
 
   <div class="page hidden" id="page4">
-    <h2>🎆彩蛋时间🎆</h2>
-    <p>无论你点了哪个，我都超开心！</p>
+
+    <p>无论你选了哪个，我都很开心</p>
   </div>
 
   <canvas id="canvas"></canvas>
