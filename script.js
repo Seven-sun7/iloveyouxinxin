@@ -1,4 +1,4 @@
-// --- ✅ script.js 完整版本（已取消打字机动画） ---
+// --- ✅ script.js 完整版本（含音乐播放解锁） ---
 
 // Canvas 动画背景（爱心粒子）
 const canvas = document.getElementById('canvas');
@@ -46,13 +46,22 @@ function animate() {
 
 animate();
 
-// 音乐静音切换
+// 音乐播放控制
 const muteBtn = document.getElementById('muteToggle');
 const audio = document.getElementById('bgm');
+
 muteBtn.addEventListener('click', () => {
   audio.muted = !audio.muted;
   muteBtn.textContent = audio.muted ? '🔇' : '🔊';
 });
+
+// 兼容浏览器对自动播放的限制：首次点击解锁播放
+window.addEventListener('click', () => {
+  if (audio.paused) {
+    audio.muted = false;
+    audio.play().catch(e => console.log('自动播放失败:', e));
+  }
+}, { once: true });
 
 // 页面跳转逻辑
 const pages = document.querySelectorAll('.page');
@@ -61,6 +70,8 @@ let currentPage = 0;
 
 function showPage(index) {
   pages.forEach(p => p.classList.remove('active'));
+  pages.forEach(p => p.classList.add('hidden'));
+  pages[index].classList.remove('hidden');
   pages[index].classList.add('active');
 }
 
@@ -78,7 +89,7 @@ choices.forEach(btn => {
   btn.addEventListener('click', () => showPage(3));
 });
 
-// 直接显示情书内容
+// 显示情书内容
 const letterText = `其实我也不知道该怎么开口才好。
 这大概算不上是一封正式的告白信，更像是一些藏在我心里的真实想法。
 
