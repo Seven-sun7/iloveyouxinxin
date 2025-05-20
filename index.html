@@ -1,35 +1,46 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>website</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>website</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
+  <style>@font-face {
+    font-family: 'YRSX';
+    src: url('YRSX.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }</style>
 </head>
 <body>
-    <audio autoplay loop muted id="bgm">
-        <source src="music.mp3" type="audio/mpeg">
-      </audio>
-      <script>
-        document.addEventListener("click", () => {
-          const audio = document.getElementById("bgm");
-          audio.muted = false;
-          audio.play();
-        });
-      </script>      
-    <div class="container">
-        <h1>520快乐，我的鑫鑫姐姐 💖</h1>
-        <p class="message">
-            今天是 5 月 20 日，一个谐音“我爱你”的日子，<br>
-            想把我满满的心意通过这张小网页送给你～<br>
-            谢谢你出现在我的世界里，让我的生活变得温暖而甜蜜，<br>
-            无论未来怎样，我都希望陪你走过每个520。<br>
-            你是我生命中那个特别的人，是我每天心动的理由。<br>
-            爱你不止今天，而是每一天。❤️
-        </p>
-    </div>
-    <canvas id="canvas"></canvas>
-    <script src="script.js"></script>
+  <audio id="bgm" autoplay loop>
+    <source src="music.mp3" type="audio/mpeg" />
+  </audio>
+  <button id="muteToggle">🔊</button>
+
+  <div class="page" id="page1">
+    <h1 class="fade-in">嘿，尹鑫姐姐👋<br>520快乐呀💖</h1>
+    <button class="next">进入下一页</button>
+  </div>
+
+  <div class="page hidden" id="page2">
+    <div id="letter" class="typewriter"></div>
+    <button class="next">继续</button>
+  </div>
+
+  <div class="page hidden" id="page3">
+    <h2>亲爱的尹鑫姐姐，<br>你愿意和我一起珍惜当下的互相陪伴吗？</h2>
+    <button class="choice" data-next="page4">❤️ 我愿意！</button>
+    <button class="choice" data-next="page4">😊 我再想想~</button>
+  </div>
+
+  <div class="page hidden" id="page4">
+    <h2>🎆彩蛋时间🎆</h2>
+    <p>无论你点了哪个，我都超开心！</p>
+  </div>
+
+  <canvas id="canvas"></canvas>
+  <script src="script.js"></script>
 </body>
 </html>
